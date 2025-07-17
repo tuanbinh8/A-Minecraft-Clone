@@ -7,11 +7,7 @@ const PORT = 3000;
 app.use(express.static('public'));
 
 io.on('connection', socket => {
-  console.log(socket)
+  io.emit('state', socket);
 });
-
-setInterval(() => {
-  io.emit('state', 'yo u got this?');
-}, 1000 / 30);
 
 server.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
